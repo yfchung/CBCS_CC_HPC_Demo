@@ -1,0 +1,43 @@
+#!/bin/bash --login
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=2G
+#SBATCH --job-name=Demo_SLURM_array
+#SBATCH --time=00:05:00
+#SBATCH --partition=general
+#SBATCH --constraint=epyc3
+#SBATCH --batch=epyc3
+#SBATCH --account=a_rhodes
+#SBATCH --array=0-2
+#SBATCH --output=output_%A_%a.out
+#SBATCH --error=error_%A_%a.error
+
+#--- 
+echo -e "\n All jobs in this array have:"
+echo -e "- SLURM_JOB_NAME=${SLURM_JOB_NAME}"
+echo -e "- SLURM_ARRAY_JOB_ID=${SLURM_ARRAY_JOB_ID} \n"
+echo -e "- SLURM_NTASKS_PER_NODE=${SLURM_NTASKS_PER_NODE}"
+echo -e "- SLURM_CPUS_PER_TASK=${SLURM_CPUS_PER_TASK}"
+echo -e "- SLURM_MEM_PER_NODE=${SLURM_MEM_PER_NODE}"
+echo -e "- SLURM_JOB_NODELIST=${SLURM_JOB_NODELIST}\n"
+
+echo -e "- SLURM_ARRAY_TASK_COUNT=${SLURM_ARRAY_TASK_COUNT}"
+echo -e "- SLURM_ARRAY_TASK_MIN=${SLURM_ARRAY_TASK_MIN}"
+echo -e "- SLURM_ARRAY_TASK_MAX=${SLURM_ARRAY_TASK_MAX} \n\n"
+  
+echo "This job in the array has:"
+echo "- SLURM_JOB_ID=${SLURM_JOB_ID}"
+echo -e "- SLURM_ARRAY_TASK_ID=${SLURM_ARRAY_TASK_ID} \n\n"
+
+echo -e "/n/n"
+
+#--- 
+# load the software module
+module load r/4.4.0-combo-EPYC3-only
+
+# Check the path or Rscript
+which Rscript
+
+# Job using the above variables
+srun Rscript $Demo_SLURM_array.R ${SLURM_ARRAY_TASK_ID}

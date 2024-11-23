@@ -1,0 +1,25 @@
+## Check storage space and memory quota
+rquota
+
+## Access R-Drive
+ls /QRISdata/QNNNN/
+
+## To list your jobs
+squeue --me
+
+## Generate job report 
+seff <JOBID>
+module load jobstats
+jobstats JobID
+
+## Check fairshare
+sshare -a | grep s4607395
+
+## Interactive session
+salloc --nodes=1 --ntasks-per-node=1 --cpus-per-task=1 --mem=5G --job-name=Demo --time=00:10:00 --qos=debug --constraint=epyc3 --account=a_rhodes srun --export=PATH,TERM,HOME,LANG --pty /bin/bash -l
+
+## basic module commands
+module avail
+module load [software name]
+module list
+module purge

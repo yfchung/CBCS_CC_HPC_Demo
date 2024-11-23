@@ -1,0 +1,17 @@
+## UQ RCC support: rcc-support@uq.edu.au 
+UQ Hacky Hour every Tuesday, 3pm–4pm
+UQ Virtual HPC User Support: every Thursday, 9:30am–10:30am
+
+## UQ-RCC github
+https://github.com/UQ-RCC/hpc-docs/blob/main/guides/Shell-Basics-for-HPC.md 
+https://github.com/UQ-RCC/hpc-docs/blob/main/guides/Bunya-User-Guide.md
+https://github.com/UQ-RCC/hpc-docs/blob/main/guides/Laptop2HPC.md
+
+
+
+## Pawsey Centre guide
+https://pawsey.atlassian.net/wiki/spaces/US/overview 
+
+
+##UQ R user group
+https://uqrug.netlify.app/ 
