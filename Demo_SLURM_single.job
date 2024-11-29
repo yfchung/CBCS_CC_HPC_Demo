@@ -2,10 +2,11 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=1
-#SBATCH --mem=2G
+#SBATCH --mem=1G
 #SBATCH --job-name=Demo_SLURM_single
 #SBATCH --time=00:05:00
 #SBATCH --partition=general
+# SBATCH --qos=debug
 #SBATCH --constraint=epyc3
 #SBATCH --batch=epyc3
 #SBATCH --account=a_rhodes
@@ -30,4 +31,4 @@ module load r/4.4.0-combo-EPYC3-only
 which Rscript
 
 # Job using the above variables
-srun Rscript $Demo_SLURM_single.R
+srun Rscript Demo_SLURM_single.R

@@ -2,10 +2,11 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=1
-#SBATCH --mem=2G
+#SBATCH --mem=1G
 #SBATCH --job-name=Demo_SLURM_array
 #SBATCH --time=00:05:00
 #SBATCH --partition=general
+# SBATCH --qos=debug
 #SBATCH --constraint=epyc3
 #SBATCH --batch=epyc3
 #SBATCH --account=a_rhodes
@@ -38,6 +39,11 @@ module load r/4.4.0-combo-EPYC3-only
 
 # Check the path or Rscript
 which Rscript
+echo -e "/n/n"
+
+# Generate the input paths based on the array index
+input_text_file_path="input_${SLURM_ARRAY_TASK_ID}.txt"
+echo -e "My input text file path is ${input_text_file_path} \n" #this will print the file name into the log file
 
 # Job using the above variables
-srun Rscript $Demo_SLURM_array.R ${SLURM_ARRAY_TASK_ID}
+srun Rscript Demo_SLURM_array.R $input_text_file_path

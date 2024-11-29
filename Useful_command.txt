@@ -1,7 +1,18 @@
+## To connect
+Putty: https://www.qcif.edu.au/training/hpc-training-resources/
+
+## If you like to make life hard, using command line ssh:
+ssh username@bunya.rcc.uq.edu.au
+
+## File Transfer: Use WinSCP (windows) or FileZila (Mac) 
+## If you hate colours, use command line scp and sftp:
+scp C:/Users/uqychun7/Documents/Data/CBCS_CC_HPC_Demo/* username@bunya.rcc.uq.edu.au:/home/username/
+
 ## Check storage space and memory quota
 rquota
 
 ## Access R-Drive
+## QNNNN = your RDM number  
 ls /QRISdata/QNNNN/
 
 ## To list your jobs
@@ -13,10 +24,11 @@ module load jobstats
 jobstats JobID
 
 ## Check fairshare
+sshare -a | head -1
 sshare -a | grep s4607395
 
 ## Interactive session
-salloc --nodes=1 --ntasks-per-node=1 --cpus-per-task=1 --mem=5G --job-name=Demo --time=00:10:00 --qos=debug --constraint=epyc3 --account=a_rhodes srun --export=PATH,TERM,HOME,LANG --pty /bin/bash -l
+salloc --nodes=1 --ntasks-per-node=1 --cpus-per-task=1 --mem=5G --job-name=Demo --time=00:10:00 --qos=debug --constraint=epyc3 --account=AccountString srun --export=PATH,TERM,HOME,LANG --pty /bin/bash -l
 
 ## basic module commands
 module avail
